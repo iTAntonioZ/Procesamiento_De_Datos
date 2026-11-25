@@ -1,4 +1,6 @@
+
 import os
+from zipfile import BadZipFile
 from openpyxl import load_workbook
 
 
@@ -14,9 +16,11 @@ class LectorArchivos:
             for fila, linea in enumerate(archivo, 1):
                 linea = linea.strip()
 
+                # Ignorar líneas vacías
                 if not linea:
                     continue
 
+                # Validar números enteros
                 try:
                     numeros.append(int(linea))
 
@@ -32,11 +36,19 @@ class LectorArchivos:
     def leer_xlsx(ruta) -> list[int]:
         numeros = []
 
-        libro = load_workbook(
-            ruta,
-            read_only=True,
-            data_only=True
-        )
+        # Validar la integridad del archivo Excel
+        try:
+            libro = load_workbook(
+                ruta,
+                read_only=True,
+                data_only=True
+            )
+
+        except BadZipFile:
+            raise ValueError(
+                'El archivo XLSX está dañado o no tiene '
+                'un formato de Excel válido.'
+            ) from None
 
         try:
             hoja = libro.active
@@ -44,6 +56,10 @@ class LectorArchivos:
             for fila, celdas in enumerate(
                 hoja.iter_rows(values_only=True), 1
             ):
+
+                if not celdas:
+                    continue
+
                 valor = celdas[0]
 
                 # Validar que exista una sola columna de datos
@@ -86,6 +102,12 @@ class LectorArchivos:
 
                 numeros.append(numero)
 
+        except BadZipFile:
+            raise ValueError(
+                'Se encontraron datos dañados durante '
+                'la lectura del archivo XLSX.'
+            ) from None
+
         finally:
             libro.close()
 
@@ -96,6 +118,13 @@ class LectorArchivos:
     def cargar(ruta) -> list[int]:
 
         ruta = os.fspath(ruta)
+
+        # Verificar que el archivo exista
+        if not os.path.isfile(ruta):
+            raise FileNotFoundError(
+                f'No se encontró el archivo: {ruta}'
+            )
+
         extension = os.path.splitext(ruta)[1].lower()
 
         if extension == '.txt':

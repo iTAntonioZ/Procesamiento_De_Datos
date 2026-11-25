@@ -1,0 +1,10 @@
+# Archivos de texto
+* text=auto
+
+# Archivos binarios
+*.xlsx binary
+*.xls binary
+*.rar binary
+*.zip binary
+*.pdf binary
+*.docx binary
