@@ -1,41 +1,101 @@
+import os
+
 from Estructura.listas_ligadas import ListaEnlazada
+from src.Procesamiento.lectura import LectorArchivos
+
+
+# Directorio raíz del proyecto
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Rutas de los datasets
+DATASET_TXT = os.path.join(
+    BASE_DIR,
+    "datasets",
+    "dataset_1000_duplicados.txt"
+)
+
+DATASET_XLSX = os.path.join(
+    BASE_DIR,
+    "datasets",
+    "dataset_5000_duplicados.xlsx"
+)
+
+
+def mostrar_menu():
+
+    print("\n======================================")
+    print(" SISTEMA DE PROCESAMIENTO DE DATOS")
+    print("======================================")
+
+    print("1. Cargar dataset de 1,000 registros")
+    print("2. Cargar dataset de 5,000 registros")
+    print("3. Mostrar primeros 20 elementos")
+    print("4. Mostrar últimos 20 elementos")
+    print("5. Mostrar total de registros")
+    print("0. Salir")
+
+    print("======================================")
 
 
 def main():
 
-    # Crear nuestra estructura de datos
     lista = ListaEnlazada()
 
-    # Datos de prueba
-    datos = [50, 20, 10, 20, 80, 5]
+    while True:
 
-    # Cargar datos en la lista enlazada
-    lista.cargar(datos)
+        mostrar_menu()
 
-    # Mostrar información
-    print("======================================")
-    print(" SISTEMA DE PROCESAMIENTO DE DATOS")
-    print("======================================")
+        opcion = input("Selecciona una opción: ").strip()
 
-    print("\nDatos:", lista.obtener_datos())
-    print("Total de registros:", lista.cantidad())
-    print("Existe ciclo:", lista.hay_ciclo())
+        try:
 
-    # Prueba de búsqueda secuencial
-    valor = 20
-    resultados = lista.buscar(valor)
+            if opcion in ("1", "2"):
 
-    print(f"\nResultados de búsqueda del número {valor}:")
+                if opcion == "1":
+                    ruta = DATASET_TXT
+                else:
+                    ruta = DATASET_XLSX
 
-    if resultados:
+                numeros = LectorArchivos.cargar(ruta)
 
-        for posicion, nodo in resultados:
-            print(f"Posición: {posicion}, Valor: {nodo.dato}")
+                lista.cargar(numeros)
 
-        print(f"Total de coincidencias: {len(resultados)}")
+                print("\nArchivo cargado correctamente.")
+                print("Archivo:", os.path.basename(ruta))
+                print("Total de registros:", lista.cantidad())
 
-    else:
-        print("No se encontraron coincidencias.")
+            elif opcion == "3":
+
+                if lista.cantidad() == 0:
+                    print("\nNo hay datos cargados.")
+                else:
+                    print("\nPrimeros 20 elementos:")
+                    print(lista.obtener_datos()[:20])
+
+            elif opcion == "4":
+
+                if lista.cantidad() == 0:
+                    print("\nNo hay datos cargados.")
+                else:
+                    print("\nÚltimos 20 elementos:")
+                    print(lista.obtener_datos()[-20:])
+
+            elif opcion == "5":
+
+                print("\nTotal de registros:", lista.cantidad())
+
+            elif opcion == "0":
+
+                print("\nFinalizando programa...")
+                break
+
+            else:
+
+                print("\nOpción no válida.")
+
+        except (OSError, ValueError) as error:
+
+            print(f"\nError: {error}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,25 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configuraciones locales de editores
+.vscode/
+.idea/
+
+# Variables de entorno
+.env
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
+
+# Resultados generados
+Resultados/*
+!Resultados/.gitkeep
