@@ -1,0 +1,1509 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Plataforma de procesamiento de datos y ciberseguridad">
+
+    <title>Dashboard | DataProcess Secure</title>
+
+    <link rel="stylesheet" href="./css/dashboard.css?v=3">
+
+</head>
+
+<body style="visibility: hidden;">
+
+    <!-- =====================================
+         BARRA LATERAL
+    ====================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+
+            <i class="bi bi-shield-lock-fill"></i>
+
+            <div>
+                <strong>DataProcess</strong>
+                <small>SECURE</small>
+            </div>
+
+        </div>
+
+        <nav class="navigation">
+
+            <p class="nav-label">GENERAL</p>
+
+            <button class="nav-item active"
+                    data-page="dashboard">
+
+                <i class="bi bi-grid"></i>
+                Dashboard
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="datasets">
+
+                <i class="bi bi-database"></i>
+                Datasets
+
+            </button>
+
+            <p class="nav-label">PROCESAMIENTO</p>
+
+            <button class="nav-item"
+                    data-page="ordenamientos">
+
+                <i class="bi bi-sort-numeric-down"></i>
+                Ordenamientos
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="busquedas">
+
+                <i class="bi bi-search"></i>
+                Búsquedas
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="externo">
+
+                <i class="bi bi-hdd-stack"></i>
+                Ordenamiento externo
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="rendimiento">
+
+                <i class="bi bi-bar-chart"></i>
+                Rendimiento
+
+            </button>
+
+            <p class="nav-label">CIBERSEGURIDAD</p>
+
+            <button class="nav-item"
+                    data-page="seguridad">
+
+                <i class="bi bi-shield-check"></i>
+                Centro de seguridad
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="integridad">
+
+                <i class="bi bi-fingerprint"></i>
+                Integridad SHA-256
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="auditoria">
+
+                <i class="bi bi-journal-text"></i>
+                Auditoría
+
+            </button>
+
+            <p class="nav-label">RESULTADOS</p>
+
+            <button class="nav-item"
+                    data-page="exportaciones">
+
+                <i class="bi bi-download"></i>
+                Exportaciones
+
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <a href="login.html" class="logout">
+
+                <i class="bi bi-box-arrow-left"></i>
+                Cerrar sesión
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         CONTENIDO PRINCIPAL
+    ====================================== -->
+
+    <main class="main-content">
+
+        <!-- ENCABEZADO -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    id="menu-toggle"
+                    class="icon-button"
+                    aria-label="Abrir menú"
+                    type="button"
+                >
+
+                    <i class="bi bi-list"></i>
+
+                </button>
+
+                <div class="breadcrumb">
+
+                    Inicio /
+
+                    <span id="breadcrumb-page">
+                        Dashboard
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="user-area">
+
+                <div class="avatar">US</div>
+
+                <div>
+
+                    <strong>Mi cuenta</strong>
+
+                    <p class="muted">
+                        Verificando sesión...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- =================================
+                 DASHBOARD
+            ================================== -->
+
+            <section id="dashboard" class="page active">
+
+                <div class="page-heading">
+
+                    <h1>Panel de control</h1>
+
+                    <p class="muted">
+
+                        Plataforma de procesamiento de datos,
+                        análisis de algoritmos y ciberseguridad.
+
+                    </p>
+
+                </div>
+
+
+                <!-- ESTADÍSTICAS -->
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+
+                        <i class="bi bi-database"></i>
+
+                        <p>Registros cargados</p>
+
+                        <h2 id="total-registros">0</h2>
+
+                        <small>Dataset actual</small>
+
+                    </article>
+
+                    <article class="stat-card">
+
+                        <i class="bi bi-sort-down"></i>
+
+                        <p>Ordenamientos</p>
+
+                        <h2>8</h2>
+
+                        <small>Algoritmos de Python</small>
+
+                    </article>
+
+                    <article class="stat-card">
+
+                        <i class="bi bi-search"></i>
+
+                        <p>Métodos de búsqueda</p>
+
+                        <h2>3</h2>
+
+                        <small>Secuencial, binaria y hash</small>
+
+                    </article>
+
+                    <article class="stat-card">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        <p>Autenticación</p>
+
+                        <h2>Auth</h2>
+
+                        <small>Supabase</small>
+
+                    </article>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <article class="panel">
+
+                        <h2>Rendimiento de algoritmos</h2>
+
+                        <p class="muted">
+
+                            Tiempos de ejecución medidos
+                            directamente en Python.
+
+                        </p>
+
+                        <div
+                            id="grafica-rendimiento"
+                            class="data-chart"
+                        >
+
+                            Sin mediciones todavía.
+
+                        </div>
+
+                    </article>
+
+                    <article class="panel">
+
+                        <h2>Actividad reciente</h2>
+
+                        <div id="actividad-reciente">
+
+                            No hay actividad registrada.
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Accesos rápidos</h2>
+
+                    <div class="actions">
+
+                        <button class="btn primary"
+                                data-go="datasets">
+
+                            <i class="bi bi-database-add"></i>
+                            Cargar datos
+
+                        </button>
+
+                        <button class="btn secondary"
+                                data-go="ordenamientos">
+
+                            <i class="bi bi-sort-down"></i>
+                            Ordenar datos
+
+                        </button>
+
+                        <button class="btn secondary"
+                                data-go="busquedas">
+
+                            <i class="bi bi-search"></i>
+                            Buscar valores
+
+                        </button>
+
+                        <button class="btn secondary"
+                                data-go="rendimiento">
+
+                            <i class="bi bi-bar-chart"></i>
+                            Comparar algoritmos
+
+                        </button>
+
+                        <button class="btn secondary"
+                                data-go="seguridad">
+
+                            <i class="bi bi-shield-check"></i>
+                            Seguridad
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 DATASETS
+            ================================== -->
+
+            <section id="datasets" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Gestión de datasets</h1>
+
+                    <p class="muted">
+
+                        Carga y administración de archivos
+                        mediante el backend de Python.
+
+                    </p>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Archivos disponibles</h2>
+
+                    <div class="dashboard-grid">
+
+                        <div class="panel">
+
+                            <i class="bi bi-filetype-txt"></i>
+
+                            <h3>Dataset TXT</h3>
+
+                            <p>
+                                1,000 registros con duplicados.
+                            </p>
+
+                            <p class="muted">
+                                dataset_1000_duplicados.txt
+                            </p>
+
+                            <button class="btn primary"
+                                    data-dataset="txt">
+
+                                <i class="bi bi-folder2-open"></i>
+                                Cargar TXT
+
+                            </button>
+
+                        </div>
+
+                        <div class="panel">
+
+                            <i class="bi bi-file-earmark-excel"></i>
+
+                            <h3>Dataset XLSX</h3>
+
+                            <p>
+                                5,000 registros con duplicados.
+                            </p>
+
+                            <p class="muted">
+                                dataset_5000_duplicados.xlsx
+                            </p>
+
+                            <button class="btn primary"
+                                    data-dataset="xlsx">
+
+                                <i class="bi bi-folder2-open"></i>
+                                Cargar XLSX
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button id="cargar-muestra"
+                                class="btn secondary">
+
+                            <i class="bi bi-database-add"></i>
+                            Cargar datos de prueba
+
+                        </button>
+
+                        <button id="limpiar-datos"
+                                class="btn danger">
+
+                            <i class="bi bi-trash"></i>
+                            Limpiar datos
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Vista previa de registros</h2>
+
+                    <p class="muted">
+
+                        Se muestran los primeros 50 registros
+                        del dataset cargado.
+
+                    </p>
+
+                    <div id="vista-datos"
+                         class="numbers-grid">
+
+                        No hay datos cargados.
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 ORDENAMIENTOS INTERNOS
+            ================================== -->
+
+            <section id="ordenamientos" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Ordenamientos internos</h1>
+
+                    <p class="muted">
+
+                        Ejecuta los algoritmos implementados
+                        en las librerías originales de Python.
+
+                    </p>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Configuración del algoritmo</h2>
+
+                    <label for="algoritmo">
+                        Algoritmo de ordenamiento
+                    </label>
+
+                    <select id="algoritmo">
+
+                        <option value="Bubble Sort">
+                            Bubble Sort
+                        </option>
+
+                        <option value="Selection Sort">
+                            Selection Sort
+                        </option>
+
+                        <option value="Insertion Sort">
+                            Insertion Sort
+                        </option>
+
+                        <option value="Shell Sort">
+                            Shell Sort
+                        </option>
+
+                        <option value="Quick Sort">
+                            Quick Sort
+                        </option>
+
+                        <option value="Merge Sort">
+                            Merge Sort
+                        </option>
+
+                        <option value="Radix Sort">
+                            Radix Sort
+                        </option>
+
+                        <option value="Heap Sort">
+                            Heap Sort
+                        </option>
+
+                    </select>
+
+
+                    <label for="orden">
+                        Tipo de ordenamiento
+                    </label>
+
+                    <select id="orden">
+
+                        <option value="asc">
+                            Ascendente
+                        </option>
+
+                        <option value="desc">
+                            Descendente
+                        </option>
+
+                    </select>
+
+
+                    <div class="actions">
+
+                        <button
+                            id="ejecutar-ordenamiento"
+                            class="btn primary"
+                        >
+
+                            <i class="bi bi-play-fill"></i>
+                            Ejecutar ordenamiento
+
+                        </button>
+
+                        <button class="btn secondary"
+                                data-go="datasets">
+
+                            <i class="bi bi-database"></i>
+                            Cambiar dataset
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Visualización de datos</h2>
+
+                    <p class="muted">
+
+                        Representación de la magnitud de los
+                        primeros 40 valores.
+
+                    </p>
+
+                    <div id="grafica-datos"
+                         class="data-chart">
+
+                        Carga un dataset.
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Resultado del ordenamiento</h2>
+
+                    <div
+                        id="resultado-ordenamiento"
+                        class="result-box"
+                        role="status"
+                    >
+
+                        Esperando ejecución.
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 MÉTODOS DE BÚSQUEDA
+            ================================== -->
+
+            <section id="busquedas" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Métodos de búsqueda</h1>
+
+                    <p class="muted">
+
+                        Localiza números y todas sus
+                        coincidencias dentro del dataset.
+
+                    </p>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Configuración de búsqueda</h2>
+
+                    <label for="metodo-busqueda">
+                        Método de búsqueda
+                    </label>
+
+                    <select id="metodo-busqueda">
+
+                        <option value="Secuencial">
+                            Búsqueda secuencial
+                        </option>
+
+                        <option value="Binaria">
+                            Búsqueda binaria
+                        </option>
+
+                        <option value="Hash">
+                            Búsqueda hash
+                        </option>
+
+                    </select>
+
+
+                    <label for="valor-busqueda">
+                        Número a buscar
+                    </label>
+
+                    <input
+                        type="number"
+                        id="valor-busqueda"
+                        step="1"
+                        placeholder="Introduce un número entero"
+                    >
+
+
+                    <p class="muted">
+
+                        La búsqueda binaria requiere que
+                        los datos estén ordenados.
+
+                    </p>
+
+
+                    <div class="actions">
+
+                        <button
+                            id="ejecutar-busqueda"
+                            class="btn primary"
+                        >
+
+                            <i class="bi bi-search"></i>
+                            Ejecutar búsqueda
+
+                        </button>
+
+                        <button class="btn secondary"
+                                data-go="ordenamientos">
+
+                            <i class="bi bi-sort-down"></i>
+                            Ordenar datos
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Resultado de búsqueda</h2>
+
+                    <div
+                        id="resultado-busqueda"
+                        class="result-box"
+                        role="status"
+                    >
+
+                        No se ha realizado ninguna búsqueda.
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 ORDENAMIENTO EXTERNO
+            ================================== -->
+
+            <section id="externo" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Ordenamiento externo</h1>
+
+                    <p class="muted">
+
+                        Procesamiento de archivos mediante
+                        bloques y mezclas externas.
+
+                    </p>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Configuración del procesamiento</h2>
+
+                    <label for="dataset-externo">
+                        Dataset de origen
+                    </label>
+
+                    <select id="dataset-externo">
+
+                        <option value="1000">
+                            TXT — 1,000 registros
+                        </option>
+
+                        <option value="5000">
+                            XLSX — 5,000 registros
+                        </option>
+
+                    </select>
+
+
+                    <label for="tamano-bloque">
+                        Tamaño de bloque
+                    </label>
+
+                    <input
+                        type="number"
+                        id="tamano-bloque"
+                        min="1"
+                        max="5000"
+                        step="1"
+                        value="1000"
+                    >
+
+
+                    <label for="orden-externo">
+                        Tipo de ordenamiento
+                    </label>
+
+                    <select id="orden-externo">
+
+                        <option value="asc">
+                            Ascendente
+                        </option>
+
+                        <option value="desc">
+                            Descendente
+                        </option>
+
+                    </select>
+
+
+                    <p class="muted">
+
+                        El archivo original se divide en bloques,
+                        se ordena y se combina mediante
+                        mezclas sucesivas.
+
+                    </p>
+
+
+                    <div class="actions">
+
+                        <button
+                            id="calcular-bloques"
+                            class="btn primary"
+                        >
+
+                            <i class="bi bi-hdd-stack"></i>
+                            Ejecutar ordenamiento externo
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Distribución de bloques</h2>
+
+                    <p class="muted">
+
+                        Visualización de hasta 50 bloques
+                        generados durante el procesamiento.
+
+                    </p>
+
+                    <div id="bloques"
+                         class="numbers-grid">
+
+                        Sin bloques generados.
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Resultado del procesamiento</h2>
+
+                    <div
+                        id="resultado-externo"
+                        class="result-box"
+                        role="status"
+                    >
+
+                        Esperando ejecución.
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 RENDIMIENTO
+            ================================== -->
+
+            <section id="rendimiento" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Análisis de rendimiento</h1>
+
+                    <p class="muted">
+
+                        Comparación de tiempos reales
+                        de ejecución de los algoritmos.
+
+                    </p>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Comparativa de algoritmos</h2>
+
+                    <p class="muted">
+
+                        Los ocho algoritmos utilizan los mismos
+                        datos originales y el sentido seleccionado
+                        en la sección de ordenamientos.
+
+                    </p>
+
+                    <div class="actions">
+
+                        <button
+                            id="comparar-algoritmos"
+                            class="btn primary"
+                        >
+
+                            <i class="bi bi-bar-chart"></i>
+                            Comparar los 8 algoritmos
+
+                        </button>
+
+                        <button class="btn secondary"
+                                data-go="dashboard">
+
+                            <i class="bi bi-graph-up"></i>
+                            Ver gráfica
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Resultados de rendimiento</h2>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Algoritmo</th>
+                                    <th>Registros</th>
+                                    <th>Tiempo</th>
+                                    <th>Estado</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabla-rendimiento">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Metodología de comparación</h2>
+
+                    <p>
+
+                        Cada algoritmo recibe una copia
+                        independiente del dataset original.
+
+                    </p>
+
+                    <p>
+
+                        Los tiempos se obtienen mediante
+                        el cronómetro implementado en Python.
+
+                    </p>
+
+                    <p>
+
+                        Las mediciones pueden variar según
+                        los recursos disponibles del servidor.
+
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 CENTRO DE SEGURIDAD
+            ================================== -->
+
+            <section id="seguridad" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Centro de seguridad</h1>
+
+                    <p class="muted">
+
+                        Controles de confidencialidad,
+                        integridad y disponibilidad.
+
+                    </p>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Principios de ciberseguridad</h2>
+
+                    <div class="security-grid">
+
+                        <div class="panel">
+
+                            <i class="bi bi-lock"></i>
+
+                            <h3>Confidencialidad</h3>
+
+                            <p>
+
+                                Autenticación de usuarios,
+                                validación de sesiones y
+                                control de acceso a la API.
+
+                            </p>
+
+                        </div>
+
+                        <div class="panel">
+
+                            <i class="bi bi-fingerprint"></i>
+
+                            <h3>Integridad</h3>
+
+                            <p>
+
+                                Validación de datos y
+                                verificación criptográfica
+                                de archivos mediante SHA-256.
+
+                            </p>
+
+                        </div>
+
+                        <div class="panel">
+
+                            <i class="bi bi-server"></i>
+
+                            <h3>Disponibilidad</h3>
+
+                            <p>
+
+                                Límites de peticiones,
+                                control de recursos y
+                                manejo de errores.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Controles de seguridad</h2>
+
+                    <div id="controles-seguridad"
+                         class="security-grid">
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Autenticación y almacenamiento</h2>
+
+                    <div class="security-grid">
+
+                        <div class="panel">
+
+                            <i class="bi bi-person-lock"></i>
+
+                            <h3>Supabase Auth</h3>
+
+                            <p>
+
+                                Gestión de usuarios y
+                                autenticación mediante
+                                correo y contraseña.
+
+                            </p>
+
+                        </div>
+
+                        <div class="panel">
+
+                            <i class="bi bi-shield-check"></i>
+
+                            <h3>Validación de tokens</h3>
+
+                            <p>
+
+                                El backend verifica la
+                                identidad del usuario antes
+                                de procesar solicitudes.
+
+                            </p>
+
+                        </div>
+
+                        <div class="panel">
+
+                            <i class="bi bi-database-lock"></i>
+
+                            <h3>Row Level Security</h3>
+
+                            <p>
+
+                                Políticas de acceso a registros
+                                por usuario. Su verificación
+                                continúa pendiente.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 INTEGRIDAD SHA-256
+            ================================== -->
+
+            <section id="integridad" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Integridad de archivos</h1>
+
+                    <p class="muted">
+
+                        Verificación criptográfica
+                        mediante SHA-256.
+
+                    </p>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Verificar archivo</h2>
+
+                    <label for="archivo-integridad">
+                        Seleccionar archivo
+                    </label>
+
+                    <input
+                        type="file"
+                        id="archivo-integridad"
+                        accept=".txt,.xlsx"
+                    >
+
+                    <p class="muted">
+
+                        Formatos permitidos: TXT y XLSX.
+                        Tamaño máximo: 5 MB.
+
+                    </p>
+
+
+                    <label for="hash-referencia">
+
+                        Hash de referencia (opcional)
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="hash-referencia"
+                        maxlength="64"
+                        autocomplete="off"
+                        spellcheck="false"
+                        placeholder="Introduce un hash SHA-256"
+                    >
+
+
+                    <div class="actions">
+
+                        <button
+                            id="calcular-hash"
+                            class="btn primary"
+                        >
+
+                            <i class="bi bi-fingerprint"></i>
+                            Calcular SHA-256
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>Resultado de integridad</h2>
+
+                    <div
+                        id="resultado-hash"
+                        class="result-box"
+                        role="status"
+                    >
+
+                        Selecciona un archivo para comenzar.
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <h2>¿Cómo funciona SHA-256?</h2>
+
+                    <p>
+
+                        SHA-256 genera una huella digital
+                        de 256 bits a partir del contenido
+                        de un archivo.
+
+                    </p>
+
+                    <p>
+
+                        Al comparar el resultado con un hash
+                        de referencia confiable, podemos
+                        comprobar si el contenido coincide.
+
+                    </p>
+
+                    <p class="muted">
+
+                        El cálculo se realiza localmente
+                        en el navegador. El archivo no se
+                        envía al servidor.
+
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 AUDITORÍA
+            ================================== -->
+
+            <section id="auditoria" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Auditoría del sistema</h1>
+
+                    <p class="muted">
+
+                        Registro de actividades y eventos
+                        durante la sesión actual.
+
+                    </p>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Historial de actividades</h2>
+
+                    <p class="muted">
+
+                        Registro temporal en el navegador.
+                        La persistencia en Supabase
+                        todavía está pendiente.
+
+                    </p>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Fecha</th>
+                                    <th>Evento</th>
+                                    <th>Estado</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabla-auditoria">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 EXPORTACIONES
+            ================================== -->
+
+            <section id="exportaciones" class="page">
+
+                <div class="page-heading">
+
+                    <h1>Exportación de resultados</h1>
+
+                    <p class="muted">
+
+                        Descarga los registros procesados
+                        mediante las librerías de Python.
+
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <article class="panel">
+
+                        <i class="bi bi-filetype-txt"></i>
+
+                        <h2>Formato TXT</h2>
+
+                        <p>
+
+                            Exporta los registros numéricos
+                            en un archivo de texto plano.
+
+                        </p>
+
+                        <button
+                            id="exportar-txt"
+                            class="btn primary"
+                        >
+
+                            <i class="bi bi-download"></i>
+                            Descargar TXT
+
+                        </button>
+
+                    </article>
+
+
+                    <article class="panel">
+
+                        <i class="bi bi-file-earmark-excel"></i>
+
+                        <h2>Formato XLSX</h2>
+
+                        <p>
+
+                            Exporta los registros mediante
+                            la librería openpyxl de Python.
+
+                        </p>
+
+                        <button
+                            id="exportar-xlsx"
+                            class="btn primary"
+                        >
+
+                            <i class="bi bi-download"></i>
+                            Descargar XLSX
+
+                        </button>
+
+                    </article>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <h2>Información de exportación</h2>
+
+                    <p>
+
+                        Los archivos se generan mediante
+                        el backend de Python utilizando
+                        los datos cargados actualmente.
+
+                    </p>
+
+                    <p>
+
+                        Debes cargar un dataset antes de
+                        realizar cualquier exportación.
+
+                    </p>
+
+                    <div class="actions">
+
+                        <button class="btn secondary"
+                                data-go="datasets">
+
+                            <i class="bi bi-database"></i>
+                            Gestionar datasets
+
+                        </button>
+
+                        <button class="btn secondary"
+                                data-go="ordenamientos">
+
+                            <i class="bi bi-sort-down"></i>
+                            Ordenar registros
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =====================================
+             PIE DE PÁGINA
+        ====================================== -->
+
+        <footer class="footer">
+
+            DataProcess Secure |
+            Procesamiento de Datos y Ciberseguridad
+
+            <p class="muted">
+
+                Python · Flask · Supabase · PostgreSQL
+
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================
+         NOTIFICACIONES
+    ====================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    >
+
+    </div>
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script type="module" src="js/app.js"></script>
+
+    <script type="module" src="js/session.js"></script>
+
+</body>
+
+</html>

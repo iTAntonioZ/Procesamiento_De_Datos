@@ -23,3 +23,15 @@ Thumbs.db
 # Resultados generados
 Resultados/*
 !Resultados/.gitkeep
+
+instance/
+.env
+*.db
+*.sqlite3
+*.log
+
+.env
+instance/
+*.db
+*.sqlite3
+*.log

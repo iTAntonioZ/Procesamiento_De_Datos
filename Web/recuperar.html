@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recuperar contraseña | DataProcess Secure</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body class="auth-body">
+
+    <main class="login-container">
+
+        <section class="login-presentation">
+
+            <div class="brand">
+
+                <i class="bi bi-shield-lock-fill"></i>
+
+                DataProcess Secure
+
+            </div>
+
+            <h1>Recupera tu acceso</h1>
+
+            <p>
+                Restablece tu contraseña mediante
+                tu correo electrónico registrado.
+            </p>
+
+            <div class="features">
+
+                <p>
+                    <i class="bi bi-envelope-check"></i>
+                    Verificación por correo electrónico
+                </p>
+
+                <p>
+                    <i class="bi bi-shield-check"></i>
+                    Recuperación segura
+                </p>
+
+                <p>
+                    <i class="bi bi-key"></i>
+                    Restablecimiento de credenciales
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="login-card">
+
+            <h2>Recuperar contraseña</h2>
+
+            <p class="muted">
+                Introduce el correo electrónico asociado
+                a tu cuenta.
+            </p>
+
+            <form id="auth-form" data-mode="recuperar">
+
+                <label for="email">
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="usuario@correo.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="btn primary full"
+                >
+
+                    <i class="bi bi-send"></i>
+
+                    Enviar instrucciones
+
+                </button>
+
+                <p
+                    id="message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+            <div class="auth-links">
+
+                <p>
+
+                    <a href="login.html">
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Volver al inicio de sesión
+
+                    </a>
+
+                </p>
+
+                <p>
+
+                    ¿No tienes una cuenta?
+
+                    <a href="registro.html">
+                        Registrarse
+                    </a>
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="js/auth.js"></script>
+
+</body>
+</html>

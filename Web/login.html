@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión | DataProcess Secure</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body class="auth-body">
+
+    <main class="login-container">
+
+        <section class="login-presentation">
+
+            <div class="brand">
+                <i class="bi bi-shield-check"></i>
+                Data<span>Process</span>
+            </div>
+
+            <p class="eyebrow">DATA INTELLIGENCE & SECURITY</p>
+
+            <h1>
+                Procesa.<br>
+                Analiza.<br>
+                <span class="cyan">Protege.</span>
+            </h1>
+
+            <p class="description">
+                Plataforma de procesamiento de datos,
+                análisis de algoritmos y ciberseguridad.
+            </p>
+
+            <div class="feature">
+                <i class="bi bi-database"></i>
+                Procesamiento de grandes volúmenes de datos
+            </div>
+
+            <div class="feature">
+                <i class="bi bi-cpu"></i>
+                Algoritmos de ordenamiento y búsqueda
+            </div>
+
+            <div class="feature">
+                <i class="bi bi-shield-lock"></i>
+                Seguridad e integridad de información
+            </div>
+
+        </section>
+
+        <section class="login-card">
+
+            <p class="eyebrow">PORTAL DE ACCESO</p>
+
+            <h2>Bienvenido de nuevo</h2>
+
+            <p class="muted">
+                Inicia sesión para acceder a tu espacio de trabajo.
+            </p>
+
+            <form id="auth-form" data-mode="login">
+
+                <div class="form-group">
+
+                    <label for="email">Correo electrónico</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="usuario@correo.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="password">Contraseña</label>
+
+                    <div class="password-container">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Introduce tu contraseña"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle"
+                            data-target="password"
+                            aria-pressed="false">
+
+                            Mostrar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="forgot-password">
+
+                    <a href="recuperar.html">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+
+                </div>
+
+                <button type="submit" class="btn primary full">
+                    Iniciar sesión
+                </button>
+
+                <p id="message" role="status"></p>
+
+            </form>
+
+            <div class="separator"></div>
+
+            <p class="center muted">
+
+                ¿No tienes una cuenta?
+
+                <a href="registro.html">
+                    Regístrate
+                </a>
+
+            </p>
+
+            <a href="dashboard.html"
+               class="btn secondary full">
+
+                Explorar dashboard de demostración
+
+            </a>
+
+            <p class="demo-notice">
+
+                Modo desarrollo: la autenticación real
+                todavía no está conectada.
+
+            </p>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="js/auth.js"></script>
+
+</body>
+
+</html>
